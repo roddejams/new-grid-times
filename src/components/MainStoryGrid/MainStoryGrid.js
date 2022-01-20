@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { COLORS } from '../../constants';
 
 import {
   MAIN_STORY,
@@ -66,6 +67,14 @@ const SecondaryStorySection = styled.section`
 const StoryList = styled.div`
   display: flex;
   flex-direction: column;
+
+  > * {
+    &:not(:last-child) {
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid ${COLORS.gray[300]};
+    }
+  }
 `;
 
 const OpinionSection = styled.section`
