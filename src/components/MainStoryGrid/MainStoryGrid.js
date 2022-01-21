@@ -56,21 +56,30 @@ const Wrapper = styled.div`
   margin-bottom: 48px;
 
   @media ${QUERIES.tabletAndUp} {
-    grid-template-columns: 518px 1fr;
+    grid-template-columns: 1fr minmax(250px, 31%);
     grid-template-areas:
       'main-story secondary-stories'
       'advertisement advertisement'
       'opinion-stories opinion-stories';
-    gap: 32px;
+    gap: 0;
   }
 `;
 
 const MainStorySection = styled.section`
   grid-area: main-story;
+
+  @media ${QUERIES.tabletAndUp} {
+    padding-right: 16px;
+  }
 `;
 
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
+
+  @media ${QUERIES.tabletAndUp} {
+    padding-left: 16px;
+    border-left: 1px solid ${COLORS.gray[300]};
+  }
 `;
 
 const StoryList = styled.div`
