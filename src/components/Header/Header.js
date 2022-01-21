@@ -100,7 +100,7 @@ const SuperHeader = styled.div`
 const Row = styled(MaxWidthWrapper)`
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 `;
 
 const ActionGroup = styled.div`
