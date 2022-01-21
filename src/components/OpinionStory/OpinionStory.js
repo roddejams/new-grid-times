@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { QUERIES } from '../../constants';
+import { QUERIES, COLORS } from '../../constants';
 
 const OpinionStory = ({ id, title, author, avatar }) => {
   return (
-    <a href={`/story/${id}`}>
+    <BottomBorderProvider href={`/story/${id}`}>
       <Wrapper>
         <Avatar alt="" src={avatar} />
         <div>
@@ -12,9 +12,28 @@ const OpinionStory = ({ id, title, author, avatar }) => {
           <ArticleTitle>{title}</ArticleTitle>
         </div>
       </Wrapper>
-    </a>
+    </BottomBorderProvider>
   );
 };
+
+const BottomBorderProvider = styled.a`
+
+  @media ${QUERIES.tabletOnly} {
+    flex: 1;
+  }
+
+  &:not(:last-child) {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid ${COLORS.gray[300]};
+
+    @media ${QUERIES.tabletOnly} {
+      padding-bottom: revert;
+      margin-bottom: revert;
+      border-bottom: revert;
+    }
+  }
+`;
 
 const Wrapper = styled.article`
   color: var(--color-gray-900);
@@ -23,7 +42,8 @@ const Wrapper = styled.article`
   justify-content: space-between;
 
   @media ${QUERIES.tabletOnly} {
-    display: block;
+    flex-direction: column;
+    gap: 8px;
   }
 `;
 
