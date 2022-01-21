@@ -37,7 +37,9 @@ const SpecialtyStoryGrid = () => {
         </SectionTitle>
         <SportsStories>
           {SPORTS_STORIES.map((data) => (
-            <MiniStory key={data.id} {...data} />
+            <SportsStoryWrapper key={data.id}>
+              <MiniStory {...data} />
+            </SportsStoryWrapper>
           ))}
         </SportsStories>
       </SportsSection>
@@ -48,13 +50,14 @@ const SpecialtyStoryGrid = () => {
 const Wrapper = styled.div`
   display: grid;
   gap: 48px;
+  grid-template-columns: minmax(0px, auto);
 
   @media ${QUERIES.tabletAndUp} {
     gap: 64px;
   }
 
   @media ${QUERIES.laptopAndUp} {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr minmax(0px, 1fr);
     gap: 0;
   }
 `;
@@ -83,10 +86,14 @@ const SportsStories = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
 
-  // @media ${QUERIES.tabletAndUp} {
-  //   display: flex;
-  //   overflow: auto;
-  // }
+  @media ${QUERIES.tabletAndUp} {
+    display: flex;
+    overflow: auto;
+  }
+`;
+
+const SportsStoryWrapper = styled.div`
+  min-width: 220px;
 `;
 
 export default SpecialtyStoryGrid;
